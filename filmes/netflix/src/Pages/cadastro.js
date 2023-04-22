@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
 function Cadastro() {
 
@@ -6,60 +6,62 @@ function Cadastro() {
     const [telefone, setTelefone] = useState('');
     const [endereco, setEndereco] = useState('');
 
-    function handleNomeChange(event){
+    function handleNomeChange(event) {
         setNome(event.target.value);
     }
 
-    function handleTelefoneChange(event){
+    function handleTelefoneChange(event) {
         setTelefone(event.target.value);
     }
 
-    function handleEnderecoChange(event){
+    function handleEnderecoChange(event) {
         setEndereco(event.target.value);
     }
 
-    function handleSubimit(event){
+    function handleSubimit(event) {
         event.preventDefault();
         console.log(`Nome:  ${nome}, Telefone: ${telefone} Telefone: ${endereco}`);
     }
 
 
-  return (
-    <div className="form-custom">
-      <form onSubmit={handleSubimit}>
-        <label>
-            Nome:
-            <input type="text" value={nome} onChange={handleNomeChange}/>
-        </label>
+    return (
+        <div className="container">
+            <div className="form-custom ">
+                <form onSubmit={handleSubimit}>
+                    <label>
+                        Nome:
+                        <input type="text" value={nome} onChange={handleNomeChange} />
+                    </label>
 
-        <br />
+                    <br />
 
-        <label>
-           Telefone:
-            <input type="text" value={telefone} onChange={handleTelefoneChange}/>
-        </label>
+                    <label>
+                        Telefone:
+                        <input type="text" value={telefone} onChange={handleTelefoneChange} />
+                    </label>
 
-        <br />
+                    <br />
 
-        <label>
-           Endereço:
-            <input type="text" value={endereco} onChange={handleEnderecoChange}/>
-        </label>
+                    <label>
+                        Endereço:
+                        <input type="text" value={endereco} onChange={handleEnderecoChange} />
+                    </label>
 
-         <br />
+                    <br />
 
-        <label for="exampleFormControlInput1"> 
-           Numéro:
-            <input type="text" value={endereco} onChange={handleEnderecoChange}/>
-        </label>
+                    <label for="exampleFormControlInput1">
+                        Numéro:
+                        <input type="text" value={endereco} onChange={handleEnderecoChange} />
+                    </label>
 
-        <br />
+                    <br />
 
-        <button type="submit">Enviar</button>
+                    <button type="submit">Enviar</button>
 
-        </form>
-    </div>
-  );
+                </form>
+            </div>
+         </div>
+    );
 }
 
 export default Cadastro;
