@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 function Detalhes() {
     const [filme, setFilme] = useState([]);
     const {id} = useParams();
-
-    console.log(id);
      
     const options = {
         method: 'GET'

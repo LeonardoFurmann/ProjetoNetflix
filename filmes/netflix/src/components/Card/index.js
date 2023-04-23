@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import Titulo from '../Titulo';
 
-function IsAssistido({ isAssitido }){
+function IsAssistido({ isAssitido }) {
 
-    if(isAssitido){
+    if (isAssitido) {
         return true;
-    } 
+    }
     return false;
-    
+
 }
 
 
@@ -14,6 +15,7 @@ function IsAssistido({ isAssitido }){
 export default function Card() {
 
     const [filmes, setFilmes] = useState([]);
+    const [busca, setBusca] = useState('');
 
     const options = {
         method: 'GET'
@@ -26,40 +28,46 @@ export default function Card() {
             .catch(err => console.error(err))
     }, []);
 
+        
+       const filmesBuscados = useMemo(() => {
+       const lowerBusca = busca.toLowerCase();
+            return filmes.filter((filme) => filme.titulo.toLowerCase().includes(lowerBusca));
+       },[busca]);          
 
     return (
 
         <div className="container text-center">
 
-            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-4">Catálogo disponível</h1>
-                <p class="lead">Atualmente temos disponíveis os filmes listados abaixo.</p>
+            <Titulo/>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Pesquisar Filmes" aria-label="Pesquisar Filmes" value ={busca} onChange={(ev) => setBusca(ev.target.value)}/>
             </div>
 
             <div class="row">
-                    {filmes.map((filme, i) => (
-                       
-                        <div class="col-lg-4 col-md-4 col-sm-12" key={i}>
+                {filmesBuscados.map((filme, i) => (
+
+                    <div class="col-lg-4 col-md-4 col-sm-12" key={i}>
                         <div className="card">
-                        <img src={filme.poster} alt={filme.titulo} className="card-img-top" />
+                            <img src={filme.poster} alt={filme.titulo} className="card-img-top" />
                             <div className="card-body">
                                 <h5 className="card-title">{filme.titulo} ({filme.ano}) </h5>
                                 <p>Nota: {filme.nota}</p>
                                 <a href={`/detalhes/${filme.id}`}>
-                                    <div className="btn btn-primary"> 
-                                    { <IsAssistido/>
-                                    ? <p>Assistir</p>
-                                    : <p>Assistir Novamente</p>
-                                }</div>
+                                    <div className="btn btn-primary">
+                                        {<IsAssistido />
+                                            ? <p>Assistir</p>
+                                            : <p>Assistir Novamente</p>
+                                        }</div>
                                 </a>
                             </div>
                         </div>
-                        </div>
-               
-                       
-                    ))}
-            </div> 
-                     
+                    </div>
+
+
+                ))}
+            </div>
+
         </div>
     );
 }
