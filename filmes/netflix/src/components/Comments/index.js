@@ -31,7 +31,6 @@ const comentarios = [{
 export default function Comments({ filme }) {
     const comentariosFilme = comentarios.filter(f =>f.filme === filme);
     
-    console.log(comentariosFilme)
        
     if(comentariosFilme.length === 0){
         return(

@@ -4,7 +4,9 @@ import Comments from './../components/Comments/index';
 
 function Detalhes() {
     const [filme, setFilme] = useState([]);
+    const [data, setData] = useState([]);
     const { id } = useParams();
+    var dataVazio;
 
     const options = {
         method: 'GET'
@@ -14,13 +16,16 @@ function Detalhes() {
         fetch(`https://my-json-server.typicode.com/marycamila184/moviedetails/moviedetails/${id}`)
             .then(response => response.json())
             .then(data => setFilme(data))
-            .catch(err => console.error(err))
+            .catch(err => console.error(err));
     }, [id]);
 
-
+    var dataVazio =  Array.isArray(data) && data.length === 0;
+        
     return (
         <div class="container">
-
+            {dataVazio? (
+                <h1 class="display-6">Não foi possivel encontrar os detalhes do filme</h1>
+            ) : (
             <div className="row">
                 <><div className="col">
                     <div className="card" style={{ maxWidth: "500px" }}>
@@ -37,6 +42,7 @@ function Detalhes() {
 
                     <Comments filme={id}/>
             </div>
+            )}
         </div>
     )
 }
