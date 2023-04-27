@@ -1,16 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Titulo from '../Titulo';
 
-function IsAssistido({ isAssitido }) {
-
-    if (isAssitido) {
-        return true;
-    }
-    return false;
-
-}
-
-
 
 export default function Card() {
 
@@ -87,7 +77,7 @@ export default function Card() {
                                 <p>Nota: {filme.nota}</p>
                                 <a href={`/detalhes/${filme.id}`}>
                                     <div className="btn btn-primary">
-                                        {<IsAssistido />
+                                        {filme.assistido
                                             ? <p>Assistir</p>
                                             : <p>Assistir Novamente</p>
                                         }</div>
