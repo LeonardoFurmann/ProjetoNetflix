@@ -1,0 +1,78 @@
+.container1{
+    display: flex;
+    flex-direction:row;
+}
+
+.poster1{
+    height: 400px;
+    margin-left: 170px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dados{
+    width: 50%;
+    height: 450px;
+}
+
+.titulo{
+    height: 10px;
+    text-align: center  ;
+}
+
+.informacoes{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container2{
+    height: 50px;
+    text-align: center;
+}
+
+.container-dadospessoais{
+    align-items: center;
+    padding-left: 150px;
+    padding-top: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;   
+}
+
+label{
+    padding-bottom: 10px;
+    padding-left: 45px;
+}
+
+.plano {
+    padding-top: 30px;
+}
+
+button{
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 150px;
+    margin: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.container-dadoscartao{
+    width: 50%;
+    height: 450px;
+    align-items: center;
+    padding-left: 150px;
+    padding-top: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+}
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button.vermelho {
+        color: red;
+    }
